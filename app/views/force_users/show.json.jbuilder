@@ -1,0 +1,1 @@
+json.partial! @force_user, partial: 'force_user', as: :force_user
