@@ -1,4 +1,4 @@
-class ForceUsersController < ApplicationController
+class Api::V1::ForceUsersController < ApplicationController
 
   def index
 
