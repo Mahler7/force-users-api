@@ -8,9 +8,15 @@ class Api::V1::ForceUsersController < ApplicationController
 
   def create
 
-    @force_user = ForceUser.create(name: params[:name], title: params[:title], lightsaber_color: params[:lightsaber_color], affiliation: params[:affiliation], location: params[:location], dark_or_light: params[:dark_or_light])
+    @force_user = ForceUser.new(name: params[:name], title: params[:title], lightsaber_color: params[:lightsaber_color], affiliation: params[:affiliation], location: params[:location], dark_or_light: params[:dark_or_light])
 
-    render :show
+    if @force_user.save
+      render :show
+    else
+      render json: { errors: @force_user.errors.full_messages }, status: 422
+    end
+
+
   end
 
   def show

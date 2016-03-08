@@ -1,0 +1,40 @@
+<div ng-app="app">
+  <div ng-controller="force_users_ctrl" ng-init="setup()">
+    <div class="force_users">
+      <h1>Force Users</h1>
+
+      Filter by Force User Name: <input ng-model="nameFilter">
+      <button ng-click="sortBy('title')">Sort By Title</button>
+      <button ng-click="sortBy('name')">Sort By Name</button>
+      <button ng-click="sortBy('lightsaber_color')">Sort By Lightsaber Color</button>
+      <button ng-click="sortBy('affiliation')">Sort By Affiliation</button>
+      <button ng-click="sortBy('location')">Sort By Location</button>
+      <button ng-click="sortBy('dark_or_light')">Sort By Side of the Force</button>
+
+        <ul>
+          <li ng-repeat="force_user in force_users |filter: {name:nameFilter}| orderBy:sortByForceUser:descending">
+            <h3>{{force_user.title}} {{force_user.name}} </h3>
+            <p>Location: {{force_user.location}}</p>
+            <p>Affiliation: {{force_user.affiliation}}</p>
+            <p>Lightsaber Color: {{force_user.lightsaber_color}}</p>
+          </li>
+        </ul>
+
+        Name <input ng-model="forceuserName"></li><br>
+        Title <input ng-model="forceuserTitle"></li><br>
+        Lightsaber Color <input ng-model="forceuserLightsaberColor"></li><br>
+        Affiliation <input ng-model="forceuserAffiliation"></li><br>
+        Location <input ng-model="forceuserLocation"></li><br>
+        Dark Side or Light Side <input ng-model="forceuserDarkOrLight"></li><br>
+
+        <button ng-click="addNewForceUser(forceuserName, forceuserTitle, forceuserLightsaberColor, forceuserAffiliation, forceuserLocation, forceuserDarkOrLight)">Add Force User</button>
+    </div>
+    
+    <div id="errors">
+      <ul>
+        <li ng-repeat="error in errors"> {{ errors }}</li>
+      </ul>
+    </div>
+  
+  </div>
+</div>
